@@ -18,8 +18,12 @@ public class Employer implements Serializable {
     @Id
     @Column(name = "Id")
     @JsonIgnore
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @MapsId
+    @JoinColumn(name = "Id")
+    @OneToOne
+    private Person person;
 
     @Column(name = "FirmName")
     @NotBlank(message = "FirmName field can not be null or empty")

@@ -20,13 +20,12 @@ public class Candidate implements Serializable {
     @Id
     @Column(name = "Id")
     @JsonIgnore
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @OneToOne
-//   // @JoinColumn(name = "id")
-//    @MapsId
-//    private Person person;
+    @MapsId
+    @JoinColumn(name = "Id")
+    @OneToOne
+    private Person person;
 
     @Column(name = "Name")
     @NotBlank(message = "Name field can not be null or empty")

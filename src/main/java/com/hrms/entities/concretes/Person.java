@@ -16,8 +16,12 @@ public class Person implements Serializable {
     @Id
     @Column(name = "Id")
     @JsonIgnore
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @MapsId
+    @JoinColumn(name = "Id")
+    @OneToOne
+    private Person person;
 
     @Column(name = "Email",unique = true)
     @NotBlank(message = "Email field can not be null or empty")
