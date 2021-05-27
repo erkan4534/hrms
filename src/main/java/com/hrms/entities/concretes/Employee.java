@@ -35,6 +35,11 @@ public class Employee implements Serializable {
     @NotBlank(message = "Surname field can not be null or empty")
     private String surname;
 
+    @ManyToOne
+    @JoinColumn(name = "PositionId")
+    @NotBlank
+    private Position position;
+
     @Column(name = "NationalId",unique = true)
     @NotBlank(message = "NationalId field can not be null or empty")
     private String nationalId;

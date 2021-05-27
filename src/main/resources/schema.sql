@@ -26,13 +26,24 @@ add constraint candidates_persons_id_fk
 foreign key (Id)
 references Persons;
 
+create table Positions (
+Id bigint not null,
+Name varchar(255),
+primary key (Id));
+
+CREATE SEQUENCE positionSeq START WITH 1 INCREMENT BY 1;
+
+alter table Positions
+add constraint positions_name_unique unique (Name);
+
 
 create table Employees(
 Id bigint not null,
-BirthDate timestamp not null,
 Name varchar(255) not null,
-NationalId varchar(255) not null,
 Surname varchar(255) not null,
+PositionId bigint,
+NationalId varchar(255) not null,
+BirthDate timestamp not null,
 primary key (Id));
 
 alter table Employees
@@ -43,6 +54,10 @@ add constraint employees_persons_id_fk
 foreign key (Id)
 references Persons;
 
+alter table Employees
+add constraint employees_positions_id_fk
+foreign key (PositionId)
+references Positions;
 
 create table Employers (
 Id bigint not null,
@@ -58,10 +73,11 @@ references Persons;
 
 create table SystemEmployees (
 Id bigint not null,
-BirthDate timestamp not null,
 Name varchar(255) not null,
-NationalId varchar(255) not null,
 Surname varchar(255) not null,
+BirthDate timestamp not null,
+NationalId varchar(255) not null,
+PositionId bigint,
 primary key (Id));
 
 alter table SystemEmployees
@@ -72,12 +88,8 @@ add constraint systemEmployees_persons_id_fk
 foreign key (Id)
 references Persons;
 
-create table Positions (
-Id bigint not null,
-Name varchar(255),
-primary key (Id));
+alter table SystemEmployees
+add constraint systemEmployees_positions_id_fk
+foreign key (PositionId)
+references Positions
 
-CREATE SEQUENCE positionSeq START WITH 1 INCREMENT BY 1;
-
-alter table Positions
-add constraint positions_name_unique unique (Name);
