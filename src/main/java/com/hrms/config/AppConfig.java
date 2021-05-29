@@ -13,6 +13,7 @@ public class AppConfig {
     @Bean
     public ResourceBundleMessageSource messageSource() {
         ResourceBundleMessageSource   messageSource = new ResourceBundleMessageSource();
+        messageSource.setDefaultEncoding("ISO-8859-9");
         messageSource.setBasename("messages/messages");
         return messageSource;
     }
