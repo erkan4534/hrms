@@ -9,10 +9,10 @@ import com.hrms.dataAccess.abstracts.CandidateDao;
 import com.hrms.entities.concretes.Candidate;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import java.util.List;
 
-@Component
+@Service
 public class CandidateManager implements CandidateService {
 
     private CandidateDao candidateDao;
