@@ -38,6 +38,7 @@ public class EmployerManager implements EmployerService {
         }
 
         employerDao.save(employer);
+        notificationAdapter.sendMail(employer.getPerson().getEmail());
         return new SuccessResult(MessageBundle.getMessageTr("employer.add"));
     }
 
@@ -79,6 +80,13 @@ public class EmployerManager implements EmployerService {
 
         if (employerDao.getByPerson_Email(employer.getPerson().getEmail()) != null) {
             message.append(MessageBundle.getMessageTr("employer.validation.using.email"));
+            return new ErrorResult(message.toString());
+        }
+
+        Result emailVerifyResult =notificationAdapter.verifyEmail(employer.getPerson().getEmail());
+
+        if(!emailVerifyResult.isSuccess()){
+            message.append(MessageBundle.getMessageTr("employer.validation.email.verify"));
             return new ErrorResult(message.toString());
         }
 
