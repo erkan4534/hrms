@@ -99,6 +99,7 @@ public class CandidateManager implements CandidateService {
             return new ErrorResult(message.toString());
         }
 
+
         return new SuccessResult(message.toString());
     }
 }
