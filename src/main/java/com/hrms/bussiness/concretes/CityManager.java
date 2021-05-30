@@ -24,7 +24,7 @@ public class CityManager implements CityService {
 
     @Override
     public DataResult<List<City>> getAll() {
-        return new SuccessDataResult<>(cityDao.findAll(),MessageBundle.getMessageTr("city.list"));
+        return new SuccessDataResult(cityDao.findAll(),MessageBundle.getMessageTr("city.list"));
     }
 
     @Override

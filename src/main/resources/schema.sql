@@ -93,3 +93,9 @@ add constraint "systemEmployees_positions_id_fk"
 foreign key ("PositionId")
 references "Positions";
 
+create table "Cities" (
+"Id" bigint not null,
+"Name" varchar(255) not null,
+primary key ("Id"));
+
+CREATE SEQUENCE "citySeq" START WITH 1 INCREMENT BY 1;

@@ -9,4 +9,5 @@ INSERT INTO "Employers" ("Id","FirmName","WebSite") VALUES ((select "Id" from "P
 INSERT INTO "Positions" ("Id","Name") VALUES ("positionSeq".nextval,'Software Developer');
 INSERT INTO "Positions" ("Id","Name") VALUES ("positionSeq".nextval,'Software Architect');
 
-
+INSERT INTO "Cities" ("Id","Name") VALUES ("citySeq".nextval,'İstanbul');
+INSERT INTO "Cities" ("Id","Name") VALUES ("citySeq".nextval,'Ankara');
