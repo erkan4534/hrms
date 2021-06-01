@@ -3,6 +3,7 @@ package com.hrms.api.controllers;
 import com.hrms.bussiness.abstracts.JobAdvertService;
 import com.hrms.core.utilities.results.DataResult;
 import com.hrms.core.utilities.results.Result;
+import com.hrms.entities.concretes.JobAdvert;
 import com.hrms.entities.dto.JobAdvertAddDto;
 import com.hrms.entities.dto.JobAdvertGetDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,16 @@ public class JobAdvertController {
     @GetMapping("/getActivePositionJobForOneFirm")
     public  DataResult<List<JobAdvertGetDto>> getActivePositionJobForOneFirm(Long employerId){
         return jobAdvertService.getActivePositionJobForOneFirm(employerId);
+    }
+
+    @PutMapping("/jobAdvertStatusSetPassive/{jobAdvertId}")
+    public Result jobAdvertStatusSetPassive (@PathVariable(value = "jobAdvertId") Long jobAdvertId) {
+        return jobAdvertService.jobAdvertStatusSetPassive(jobAdvertId);
+    }
+
+    @PutMapping("/jobAdvertStatusSetActive/{jobAdvertId}")
+    public Result jobAdvertStatusSetActive (@PathVariable(value = "jobAdvertId") Long jobAdvertId) {
+        return jobAdvertService.jobAdvertStatusSetActive(jobAdvertId);
     }
 
     @PostMapping("/add")

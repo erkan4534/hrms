@@ -51,6 +51,17 @@ public class JobAdvertManager implements JobAdvertService {
         return new SuccessDataResult(jobAdvertDao.save(jobAdvert),MessageBundle.getMessageTr("jobAdvert.add"));
     }
 
+    @Override
+    public Result jobAdvertStatusSetPassive(Long jobAdvertId) {
+        return new SuccessDataResult(jobAdvertDao.jobAdvertStatusSetPassive(jobAdvertId),MessageBundle.getMessageTr("jobAdvert.passive"));
+    }
+
+    @Override
+    public Result jobAdvertStatusSetActive(Long jobAdvertId) {
+        return new SuccessDataResult(jobAdvertDao.jobAdvertStatusSetActive(jobAdvertId),MessageBundle.getMessageTr("jobAdvert.active"));
+    }
+
+
     private JobAdvert convertToJobAdvert(JobAdvertAddDto jobAdvertAddDto) {
         JobAdvert jobAdvert = null;
         try {

@@ -103,32 +103,33 @@ CREATE SEQUENCE "citySeq" START WITH 1 INCREMENT BY 1;
 
 create table "JobAdverts" (
 "Id" bigint not null,
-"employerId" bigint not null,
-"positionId" bigint not null,
-"description" varchar(255) not null,
-"cityId" bigint not null,
-"maxSalary" bigint,
-"minSalary" bigint,
-"openPositionsNumber" bigint not null,
-"createDate" timestamp,
-"applyDeadLine" timestamp,
+"EmployerId" bigint not null,
+"PositionId" bigint not null,
+"Description" varchar(255) not null,
+"CityId" bigint not null,
+"Status" integer not null,
+"MaxSalary" bigint,
+"MinSalary" bigint,
+"OpenPositionsNumber" bigint not null,
+"CreateDate" timestamp,
+"ApplyDeadLine" timestamp,
 primary key ("Id"));
 
 
 alter table "JobAdverts"
 add constraint "jobAdverts_employer_Id_fk"
-foreign key ("employerId")
+foreign key ("EmployerId")
 references "Employers";
 
 
 alter table "JobAdverts"
 add constraint "jobAdverts_city_Id_fk"
-foreign key ("cityId")
+foreign key ("CityId")
 references "Cities";
 
 alter table "JobAdverts"
 add constraint "jobAdverts_position_Id_fk"
-foreign key ("positionId")
+foreign key ("PositionId")
 references "Positions";
 
 CREATE SEQUENCE "jobAdvertSeq" START WITH 1 INCREMENT BY 1;
