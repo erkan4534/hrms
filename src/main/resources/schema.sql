@@ -28,7 +28,7 @@ references "Persons";
 
 create table "Positions" (
 "Id" bigint not null,
-"Name" varchar(255),
+"Name" varchar(255) not null,
 primary key ("Id"));
 
 CREATE SEQUENCE "positionSeq" START WITH 1 INCREMENT BY 1;
@@ -99,3 +99,36 @@ create table "Cities" (
 primary key ("Id"));
 
 CREATE SEQUENCE "citySeq" START WITH 1 INCREMENT BY 1;
+
+
+create table "JobAdverts" (
+"Id" bigint not null,
+"employerId" bigint not null,
+"positionId" bigint not null,
+"description" varchar(255) not null,
+"cityId" bigint not null,
+"maxSalary" bigint,
+"minSalary" bigint,
+"openPositionsNumber" bigint not null,
+"createDate" timestamp,
+"applyDeadLine" timestamp,
+primary key ("Id"));
+
+
+alter table "JobAdverts"
+add constraint "jobAdverts_employer_Id_fk"
+foreign key ("employerId")
+references "Employers";
+
+
+alter table "JobAdverts"
+add constraint "jobAdverts_city_Id_fk"
+foreign key ("cityId")
+references "Cities";
+
+alter table "JobAdverts"
+add constraint "jobAdverts_position_Id_fk"
+foreign key ("positionId")
+references "Positions";
+
+CREATE SEQUENCE "jobAdvertSeq" START WITH 1 INCREMENT BY 1;

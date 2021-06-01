@@ -11,3 +11,4 @@ INSERT INTO "Positions" ("Id","Name") VALUES ("positionSeq".nextval,'Software Ar
 
 INSERT INTO "Cities" ("Id","Name") VALUES ("citySeq".nextval,'İstanbul');
 INSERT INTO "Cities" ("Id","Name") VALUES ("citySeq".nextval,'Ankara');
+

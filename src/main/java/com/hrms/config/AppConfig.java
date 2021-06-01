@@ -1,5 +1,6 @@
 package com.hrms.config;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
@@ -24,5 +25,10 @@ public class AppConfig {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.hrms"))
                 .build();
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 }
