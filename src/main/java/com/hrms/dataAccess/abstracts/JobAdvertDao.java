@@ -1,6 +1,5 @@
 package com.hrms.dataAccess.abstracts;
 
-import com.hrms.core.utilities.results.Result;
 import com.hrms.entities.concretes.JobAdvert;
 import com.hrms.entities.dto.JobAdvertGetDto;
 import org.springframework.data.jpa.repository.JpaRepository;
