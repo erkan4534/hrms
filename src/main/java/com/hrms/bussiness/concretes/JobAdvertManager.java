@@ -1,6 +1,7 @@
 package com.hrms.bussiness.concretes;
 
 import com.hrms.bussiness.abstracts.JobAdvertService;
+import com.hrms.core.utilities.MessageBundle;
 import com.hrms.core.utilities.results.DataResult;
 import com.hrms.core.utilities.results.Result;
 import com.hrms.core.utilities.results.SuccessDataResult;
@@ -31,13 +32,23 @@ public class JobAdvertManager implements JobAdvertService {
 
     @Override
     public DataResult<List<JobAdvertGetDto>> getAllActivePositionJob() {
-        return new SuccessDataResult(jobAdvertDao.getAllActivePositionJob());
+        return new SuccessDataResult(jobAdvertDao.getAllActivePositionJob(),MessageBundle.getMessageTr("jobAdvert.list"));
+    }
+
+    @Override
+    public DataResult<List<JobAdvertGetDto>> getAllActivePositionJobOrderByApplyDeadline() {
+        return new SuccessDataResult(jobAdvertDao.getAllActivePositionJobOrderByApplyDeadline(),MessageBundle.getMessageTr("jobAdvert.list"));
+    }
+
+    @Override
+    public DataResult<List<JobAdvertGetDto>> getActivePositionJobForOneFirm(Long employerId) {
+        return new SuccessDataResult(jobAdvertDao.getActivePositionJobForOneFirm(employerId), MessageBundle.getMessageTr("jobAdvert.list"));
     }
 
     @Override
     public Result add(JobAdvertAddDto jobAdvertAddDto) {
         JobAdvert jobAdvert = convertToJobAdvert(jobAdvertAddDto);
-        return new SuccessDataResult(jobAdvertDao.save(jobAdvert));
+        return new SuccessDataResult(jobAdvertDao.save(jobAdvert),MessageBundle.getMessageTr("jobAdvert.add"));
     }
 
     private JobAdvert convertToJobAdvert(JobAdvertAddDto jobAdvertAddDto) {

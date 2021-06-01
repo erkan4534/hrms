@@ -26,7 +26,17 @@ public class JobAdvertController {
         return jobAdvertService.getAllActivePositionJob();
     }
 
-   @PostMapping("/add")
+    @GetMapping("/getAllActivePositionJobOrderByApplyDeadline")
+    public  DataResult<List<JobAdvertGetDto>> getAllActivePositionJobOrderByApplyDeadline(){
+        return jobAdvertService.getAllActivePositionJobOrderByApplyDeadline();
+    }
+
+    @GetMapping("/getActivePositionJobForOneFirm")
+    public  DataResult<List<JobAdvertGetDto>> getActivePositionJobForOneFirm(Long employerId){
+        return jobAdvertService.getActivePositionJobForOneFirm(employerId);
+    }
+
+    @PostMapping("/add")
     public Result add (@RequestBody JobAdvertAddDto jobAdvertAddDto) throws ParseException {
         return jobAdvertService.add(jobAdvertAddDto);
     }
