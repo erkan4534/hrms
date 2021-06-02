@@ -26,13 +26,13 @@ public class JobAdvert implements Serializable {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "EmployerId",foreignKey = @ForeignKey(name = "jobAdverts_employer_Id_fk"))
+    @JoinColumn(name = "EmployerId",foreignKey = @ForeignKey(name = "jobAdverts_employer_id_fk"))
     @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private Employer employer;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "PositionId",foreignKey = @ForeignKey(name = "jobAdverts_position_Id_fk"))
+    @JoinColumn(name = "PositionId",foreignKey = @ForeignKey(name = "jobAdverts_position_id_fk"))
     @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private Position position;
 
@@ -42,7 +42,7 @@ public class JobAdvert implements Serializable {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "CityId",foreignKey = @ForeignKey(name = "jobAdverts_city_Id_fk"))
+    @JoinColumn(name = "CityId",foreignKey = @ForeignKey(name = "jobAdverts_city_id_fk"))
     @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private City city;
 

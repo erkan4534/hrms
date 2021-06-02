@@ -6,9 +6,10 @@ create table "Persons" (
 primary key ("Id"));
 
 alter table "Persons"
-add constraint "persons_email_unique" unique ("Email");
+add constraint "persons_email_unique"
+unique ("Email");
 
-CREATE SEQUENCE "personSeq" START WITH 1 INCREMENT BY 1;
+
 
 create table "Candidates" (
 "Id" bigint not null,
@@ -19,22 +20,27 @@ create table "Candidates" (
 primary key ("Id"));
 
 alter table "Candidates"
-add constraint "candidates_nationalId_unique" unique ("NationalId");
+add constraint "candidates_nationalId_unique"
+unique ("NationalId");
 
 alter table "Candidates"
 add constraint "candidates_persons_id_fk"
 foreign key ("Id")
 references "Persons";
 
+
+
+
 create table "Positions" (
 "Id" bigint not null,
 "Name" varchar(255) not null,
 primary key ("Id"));
 
-CREATE SEQUENCE "positionSeq" START WITH 1 INCREMENT BY 1;
-
 alter table "Positions"
-add constraint "positions_name_unique" unique ("Name");
+add constraint "positions_name_unique"
+unique ("Name");
+
+
 
 
 create table "Employees"(
@@ -47,7 +53,8 @@ create table "Employees"(
 primary key ("Id"));
 
 alter table "Employees"
-add constraint "employees_nationalId_unique" unique ("NationalId");
+add constraint "employees_nationalId_unique"
+unique ("NationalId");
 
 alter table "Employees"
 add constraint "employees_persons_id_fk"
@@ -58,6 +65,9 @@ alter table "Employees"
 add constraint "employees_positions_id_fk"
 foreign key ("PositionId")
 references "Positions";
+
+
+
 
 create table "Employers" (
 "Id" bigint not null,
@@ -71,6 +81,8 @@ foreign key ("Id")
 references "Persons";
 
 
+
+
 create table "SystemEmployees" (
 "Id" bigint not null,
 "Name" varchar(255) not null,
@@ -81,7 +93,8 @@ create table "SystemEmployees" (
 primary key ("Id"));
 
 alter table "SystemEmployees"
-add constraint "systemEmployees_nationalId_unique" unique ("NationalId");
+add constraint "systemEmployees_nationalId_unique"
+unique ("NationalId");
 
 alter table "SystemEmployees"
 add constraint "systemEmployees_persons_id_fk"
@@ -93,12 +106,13 @@ add constraint "systemEmployees_positions_id_fk"
 foreign key ("PositionId")
 references "Positions";
 
+
+
 create table "Cities" (
 "Id" bigint not null,
 "Name" varchar(255) not null,
 primary key ("Id"));
 
-CREATE SEQUENCE "citySeq" START WITH 1 INCREMENT BY 1;
 
 
 create table "JobAdverts" (
@@ -116,20 +130,108 @@ create table "JobAdverts" (
 primary key ("Id"));
 
 
+
+
 alter table "JobAdverts"
-add constraint "jobAdverts_employer_Id_fk"
+add constraint "jobAdverts_employer_id_fk"
 foreign key ("EmployerId")
 references "Employers";
 
-
 alter table "JobAdverts"
-add constraint "jobAdverts_city_Id_fk"
+add constraint "jobAdverts_city_id_fk"
 foreign key ("CityId")
 references "Cities";
 
 alter table "JobAdverts"
-add constraint "jobAdverts_position_Id_fk"
+add constraint "jobAdverts_position_id_fk"
 foreign key ("PositionId")
 references "Positions";
 
-CREATE SEQUENCE "jobAdvertSeq" START WITH 1 INCREMENT BY 1;
+
+
+create table "CurriculumVitaes" (
+"Id" bigint not null,
+"CoverLetter" varchar(255),
+"GithubAddress" varchar(255),
+"LinkedinAddress" varchar(255),
+"CandidateId" bigint not null,
+primary key ("Id"));
+
+alter table "CurriculumVitaes"
+add constraint curriculumVitae_candidate_id_fk
+foreign key ("CandidateId")
+references "Candidates";
+
+
+
+create table "Abilities" (
+"Id" bigint not null,
+"AbilityName" varchar(255),
+"CurriculumVitaeId" bigint not null,
+primary key ("Id"));
+
+alter table "Abilities"
+add constraint ability_curriculumVitae_id_fk
+foreign key ("CurriculumVitaeId")
+references "CurriculumVitaes";
+
+
+
+create table "Educations" (
+"Id" bigint not null,
+"GraduationDate" timestamp,
+"PartName" varchar(255),
+"SchoolName" varchar(255),
+"StartingDate" timestamp,
+"CurriculumVitaeId" bigint not null,
+primary key ("Id"));
+
+alter table "Educations"
+add constraint education_curriculumVitae_id_fk
+foreign key ("CurriculumVitaeId")
+references "CurriculumVitaes";
+
+
+
+create table "Experiences" (
+"Id" bigint not null,
+"FirmName" varchar(255),
+"PositionName" varchar(255),
+"quitDate" date,
+"startingDate" date not null,
+"CurriculumVitaeId" bigint not null,
+primary key ("Id"));
+
+alter table "Experiences"
+add constraint experience_curriculumVitae_id_fk
+foreign key ("CurriculumVitaeId")
+references "CurriculumVitaes";
+
+
+
+create table "Languages" (
+"Id" bigint not null,
+"Degree" bigint check ("Degree"<=5 AND "Degree">=1),
+"Language" varchar(255) not null,
+"CurriculumVitaeId" bigint not null,
+primary key ("Id"));
+
+
+alter table "Languages"
+add constraint language_curriculumVitae_id_fk
+foreign key ("CurriculumVitaeId")
+references "CurriculumVitaes";
+
+
+
+
+
+create sequence "abilitySeq" start with 1 increment by 1;
+create sequence "citySeq" start with 1 increment by 1;
+create sequence "curriculumVitaeSeq" start with 1 increment by 1;
+create sequence "educationSeq" start with 1 increment by 1;
+create sequence "experienceSeq" start with 1 increment by 1;
+create sequence "jobAdvertSeq" start with 1 increment by 1;
+create sequence "languageSeq" start with 1 increment by 1;
+create sequence "personSeq" start with 1 increment by 1;
+create sequence "positionSeq" start with 1 increment by 1;

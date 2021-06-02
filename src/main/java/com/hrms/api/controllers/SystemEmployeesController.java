@@ -10,12 +10,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/SystemEmployees")
-public class SystemEmployeeController {
+public class SystemEmployeesController {
 
     private SystemEmployeeService systemEmployeeService;
 
     @Autowired
-    public SystemEmployeeController(SystemEmployeeService systemEmployeeService) {
+    public SystemEmployeesController(SystemEmployeeService systemEmployeeService) {
         this.systemEmployeeService = systemEmployeeService;
     }
 
