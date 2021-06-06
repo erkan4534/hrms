@@ -41,6 +41,7 @@ public class Candidate implements Serializable {
 
     @Column(name = "BirthDate")
     @NotNull(message = "BirthDate field can not be null or empty")
+    @Temporal(TemporalType.DATE)
     private Date birthDate;
 
 }
