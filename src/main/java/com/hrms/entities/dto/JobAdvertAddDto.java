@@ -1,38 +1,18 @@
 package com.hrms.entities.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import javax.validation.constraints.*;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class JobAdvertAddDto {
-
-    @NotNull
     private Long employerId;
-
-    @NotNull
     private Long positionId;
-
-    @NotBlank
     private String description;
-
-    @NotNull
     private Long cityId;
-
-    @PositiveOrZero
     private Long minSalary;
-
-    @PositiveOrZero
     private Long maxSalary;
-
-    @Positive
-    @NotNull
     private Long openPositionsNumber;
-
-    @JsonIgnore
-    private final LocalDateTime createDate = LocalDateTime.now();
-
-    @Future
-    private LocalDateTime applyDeadline;
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
+    private Date applyDeadline;
 }

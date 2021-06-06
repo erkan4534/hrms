@@ -125,8 +125,8 @@ create table "JobAdverts" (
 "MaxSalary" bigint,
 "MinSalary" bigint,
 "OpenPositionsNumber" bigint not null,
-"CreateDate" timestamp,
-"ApplyDeadLine" timestamp,
+"CreateDate" DATETIME,
+"ApplyDeadLine" date,
 primary key ("Id"));
 
 

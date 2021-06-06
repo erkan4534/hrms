@@ -12,3 +12,11 @@ INSERT INTO "Positions" ("Id","Name") VALUES ("positionSeq".nextval,'Software Ar
 INSERT INTO "Cities" ("Id","Name") VALUES ("citySeq".nextval,'İstanbul');
 INSERT INTO "Cities" ("Id","Name") VALUES ("citySeq".nextval,'Ankara');
 
+
+INSERT INTO "JobAdverts" ("Id","EmployerId","PositionId","Description","CityId","Status","MaxSalary", "MinSalary","OpenPositionsNumber","CreateDate","ApplyDeadLine")
+values ("jobAdvertSeq".nextval,(select "Id" from "Persons" where  "Email"='vodafon-info@vodafon.com'),(SELECT "Id" FROM "Positions" where "Name"='Software Developer'),
+'Software Developer',(SELECT "Id" FROM "Cities" where "Name"='İstanbul'),1, 10000, 5000, 5,CURRENT_DATE, CURRENT_DATE+4);
+
+INSERT INTO "JobAdverts" ("Id","EmployerId","PositionId","Description","CityId","Status","MaxSalary", "MinSalary","OpenPositionsNumber","CreateDate","ApplyDeadLine")
+values ("jobAdvertSeq".nextval,(select "Id" from "Persons" where  "Email"='vodafon-info@vodafon.com'),(SELECT "Id" FROM "Positions" where "Name"='Software Architect'),
+'Software Architect',(SELECT "Id" FROM "Cities" where "Name"='Ankara'),0, 20000, 10000, 3,CURRENT_DATE, CURRENT_DATE+6);
