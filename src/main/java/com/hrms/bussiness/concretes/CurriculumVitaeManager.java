@@ -7,25 +7,19 @@ import com.hrms.core.utilities.results.Result;
 import com.hrms.core.utilities.results.SuccessDataResult;
 import com.hrms.core.utilities.results.SuccessResult;
 import com.hrms.dataAccess.abstracts.CurriculumVitaeDao;
-import com.hrms.dataAccess.abstracts.EducationDao;
 import com.hrms.entities.concretes.CurriculumVitae;
-import com.hrms.entities.concretes.Education;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.List;
-
 
 @Service
 public class CurriculumVitaeManager implements CurriculumVitaeService {
 
     private CurriculumVitaeDao curriculumVitaeDao;
-    private EducationDao educationDao;
 
     @Autowired
-    public CurriculumVitaeManager(CurriculumVitaeDao curriculumVitaeDao, EducationDao educationDao) {
+    public CurriculumVitaeManager(CurriculumVitaeDao curriculumVitaeDao) {
         this.curriculumVitaeDao = curriculumVitaeDao;
-        this.educationDao = educationDao;
     }
 
     @Override

@@ -37,9 +37,8 @@ public class EducationManager implements EducationService {
     @Override
     public DataResult<List<Education>> getAllSortedByGraduationDateDesc(Long curriculumVitaeId) {
         return new SuccessDataResult<>(educationDao.getByCurriculumVitae_Id(curriculumVitaeId,
-                Sort.by(new Sort.Order(Sort.Direction.DESC, "graduationDate", Sort.NullHandling.NULLS_FIRST)))
-                ,MessageBundle.getMessageTr("education.list.graduationDate.desc"));
+        Sort.by(new Sort.Order(Sort.Direction.DESC, "graduationDate")))
+        ,MessageBundle.getMessageTr("education.list.graduationDate.desc"));
     }
-
 
 }

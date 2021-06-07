@@ -39,7 +39,9 @@ public class ExperienceManager implements ExperienceService {
     @Override
     public DataResult<List<Experience>> getAllSortedByQuitDateDesc(Long curriculumVitaeId) {
         return new SuccessDataResult(experienceDao.getByCurriculumVitae_Id(curriculumVitaeId,
-        Sort.by(new Sort.Order(Sort.Direction.DESC, "quitDate", Sort.NullHandling.NULLS_FIRST))),
+        Sort.by(new Sort.Order(Sort.Direction.DESC, "quitDate"))),
         MessageBundle.getMessageTr("experience.list.graduationDate.desc"));
+
+
     }
 }
