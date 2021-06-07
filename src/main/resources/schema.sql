@@ -129,8 +129,6 @@ create table "JobAdverts" (
 primary key ("Id"));
 
 
-
-
 alter table "JobAdverts"
 add constraint "jobAdverts_employer_id_fk"
 foreign key ("EmployerId")
