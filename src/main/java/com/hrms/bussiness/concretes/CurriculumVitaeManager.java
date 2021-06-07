@@ -40,8 +40,9 @@ public class CurriculumVitaeManager implements CurriculumVitaeService {
     }
 
     @Override
-    public DataResult<List<Education>> getSortDescEducation(Long curriculumVitaeId) {
+    public DataResult<List<Education>> getAllSortedByGraduationDateDesc(Long curriculumVitaeId) {
         return new SuccessDataResult<>(educationDao.getByCurriculumVitae_Id(curriculumVitaeId,
-                Sort.by(Sort.Direction.DESC, "graduationDate", Sort.NullHandling.NULLS_FIRST.name())));
+                Sort.by(new Sort.Order(Sort.Direction.DESC, "graduationDate", Sort.NullHandling.NULLS_FIRST)))
+                ,MessageBundle.getMessageTr("curriculumVitae.sort.education"));
     }
 }

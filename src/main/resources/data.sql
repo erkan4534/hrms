@@ -74,13 +74,19 @@ VALUES ("abilitySeq".nextval,'Excel,Word',(select "Id" from "CurriculumVitaes"
 where "CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com')));
 
 INSERT INTO "Educations" ("Id","PartName","SchoolName","StartingDate","GraduationDate","CurriculumVitaeId")
-VALUES ("educationSeq".nextval,'Bilgisayar Mühendisliği.','Marmara Üniversitesi',
+VALUES ("educationSeq".nextval,'Bilgisayar Mühendisliği','Marmara Üniversitesi',
 to_date('02-04-2010','dd-MM-yyyy'),to_date('02-09-2014','dd-MM-yyyy'),
 (select "Id" from "CurriculumVitaes" where
 "CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com')));
 
 INSERT INTO "Educations" ("Id","PartName","SchoolName","StartingDate","GraduationDate","CurriculumVitaeId")
-VALUES ("educationSeq".nextval,'Bilgisayar Programcılığı.','Ahmet Yesevi Üniversitesi',
+VALUES ("educationSeq".nextval,'Bilgisayar Programcılığı','Ahmet Yesevi Üniversitesi',
 to_date('02-04-2008','dd-MM-yyyy'),to_date('02-08-2010','dd-MM-yyyy'),
+(select "Id" from "CurriculumVitaes" where
+"CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com')));
+
+INSERT INTO "Educations" ("Id","PartName","SchoolName","StartingDate","GraduationDate","CurriculumVitaeId")
+VALUES ("educationSeq".nextval,'Bilgisayar Mühendisliği Yüksek Lisans','Bahçeşehir Üniversitesi',
+to_date('02-04-2018','dd-MM-yyyy'),null,
 (select "Id" from "CurriculumVitaes" where
 "CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com')));

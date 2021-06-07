@@ -11,6 +11,6 @@ import java.util.List;
 public interface CurriculumVitaeService {
     DataResult<List<CurriculumVitae>> getAll();
     Result add(CurriculumVitae curriculumVitae);
-    DataResult<List<Education>> getSortDescEducation(Long curriculumVitaeId);
+    DataResult<List<Education>> getAllSortedByGraduationDateDesc(Long curriculumVitaeId);
 
 }

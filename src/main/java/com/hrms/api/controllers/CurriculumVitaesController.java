@@ -33,8 +33,8 @@ public class CurriculumVitaesController {
         return curriculumVitaeService.add(curriculumVitae);
     }
 
-    @GetMapping("/getSortDescEducation")
-    public DataResult<List<Education>> getSortDescEducation(Long curriculumVitaeId) {
-        return  curriculumVitaeService.getSortDescEducation(curriculumVitaeId);
+    @GetMapping("/getAllSortedByGraduationDateDesc")
+    public DataResult<List<Education>> getAllSortedByGraduationDateDesc(Long curriculumVitaeId) {
+        return  curriculumVitaeService.getAllSortedByGraduationDateDesc(curriculumVitaeId);
     }
 }
