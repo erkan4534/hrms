@@ -8,4 +8,5 @@ import java.util.List;
 public interface EducationService {
     DataResult<List<Education>> getAll();
     Result add(Education education);
+    DataResult<List<Education>> getAllSortedByGraduationDateDesc(Long curriculumVitaeId);
 }
