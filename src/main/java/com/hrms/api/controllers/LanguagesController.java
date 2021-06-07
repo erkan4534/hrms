@@ -6,7 +6,6 @@ import com.hrms.core.utilities.results.Result;
 import com.hrms.entities.concretes.Language;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
