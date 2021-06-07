@@ -25,17 +25,17 @@ public class Education implements Serializable {
     @Column(name = "Id")
     private Long id;
 
-    @Column(name = "SchoolName")
-    private String schoolName;
-
     @Column(name = "PartName")
     private String partName;
 
-    @Column(name = "GraduationDate")
-    private Date graduationDate;
+    @Column(name = "SchoolName")
+    private String schoolName;
 
     @Column(name = "StartingDate")
     private Date startingDate;
+
+    @Column(name = "GraduationDate")
+    private Date graduationDate;
 
     @NotNull
     @ManyToOne

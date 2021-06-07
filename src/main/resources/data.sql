@@ -60,15 +60,27 @@ VALUES ("jobAdvertSeq".nextval,(select "Id" from "Persons" where  "Email"='turte
 (SELECT "Id" FROM "Positions" where "Name"='Business Analyst'),
 'Business Analyst',(SELECT "Id" FROM "Cities" where "Name"='İzmir'),1, 8000, 3000, 2,CURRENT_DATE, CURRENT_DATE+10);
 
+
 INSERT INTO "CurriculumVitaes" ("Id","CoverLetter","GithubAddress","LinkedinAddress","CandidateId")
 VALUES ("curriculumVitaeSeq".nextval, 'test','http://githubMyAddress','http://linkedinMyAddress',
 (select "Id" from "Persons" where "Email"='bennu-adali@gmail.com'));
 
 INSERT INTO "Abilities" ("Id","AbilityName","CurriculumVitaeId")
-VALUES ("abilitySeq".nextval,'Java',select "Id" from "CurriculumVitaes"
-where "CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com'));
+VALUES ("abilitySeq".nextval,'Java',(select "Id" from "CurriculumVitaes"
+where "CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com')));
 
 INSERT INTO "Abilities" ("Id","AbilityName","CurriculumVitaeId")
-VALUES ("abilitySeq".nextval,'Excel,Word',select "Id" from "CurriculumVitaes"
-where "CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com'));
+VALUES ("abilitySeq".nextval,'Excel,Word',(select "Id" from "CurriculumVitaes"
+where "CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com')));
 
+INSERT INTO "Educations" ("Id","PartName","SchoolName","StartingDate","GraduationDate","CurriculumVitaeId")
+VALUES ("educationSeq".nextval,'Bilgisayar Mühendisliği.','Marmara Üniversitesi',
+to_date('02-04-2010','dd-MM-yyyy'),to_date('02-09-2014','dd-MM-yyyy'),
+(select "Id" from "CurriculumVitaes" where
+"CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com')));
+
+INSERT INTO "Educations" ("Id","PartName","SchoolName","StartingDate","GraduationDate","CurriculumVitaeId")
+VALUES ("educationSeq".nextval,'Bilgisayar Programcılığı.','Ahmet Yesevi Üniversitesi',
+to_date('02-04-2008','dd-MM-yyyy'),to_date('02-08-2010','dd-MM-yyyy'),
+(select "Id" from "CurriculumVitaes" where
+"CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com')));

@@ -176,10 +176,10 @@ references "CurriculumVitaes";
 
 create table "Educations" (
 "Id" bigint not null,
-"GraduationDate" timestamp,
 "PartName" varchar(255),
 "SchoolName" varchar(255),
-"StartingDate" timestamp,
+"StartingDate" date,
+"GraduationDate" date,
 "CurriculumVitaeId" bigint not null,
 primary key ("Id"));
 
@@ -187,7 +187,6 @@ alter table "Educations"
 add constraint education_curriculumVitae_id_fk
 foreign key ("CurriculumVitaeId")
 references "CurriculumVitaes";
-
 
 
 create table "Experiences" (
