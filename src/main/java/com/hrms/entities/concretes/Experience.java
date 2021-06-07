@@ -39,6 +39,5 @@ public class Experience {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "CurriculumVitaeId",foreignKey = @ForeignKey(name = "experience_curriculumVitae_id_fk"))
-    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private CurriculumVitae curriculumVitae;
 }

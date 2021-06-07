@@ -15,6 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "Educations")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","CurriculumVitaes"})
 public class Education implements Serializable {
 
     @Id
@@ -39,7 +40,6 @@ public class Education implements Serializable {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "CurriculumVitaeId",foreignKey = @ForeignKey(name = "education_curriculumVitae_id_fk"))
-    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private CurriculumVitae curriculumVitae;
 
 }

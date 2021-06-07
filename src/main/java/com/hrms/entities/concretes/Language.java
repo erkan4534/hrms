@@ -36,6 +36,5 @@ public class Language {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "CurriculumVitaeId",foreignKey = @ForeignKey(name = "language_curriculumVitae_id_fk"))
-    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private CurriculumVitae curriculumVitae;
 }

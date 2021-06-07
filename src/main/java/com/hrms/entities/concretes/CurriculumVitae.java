@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "CurriculumVitaes")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","educations","experiences","languages","abilities"})
 public class CurriculumVitae {
 
     @Id
@@ -26,7 +27,6 @@ public class CurriculumVitae {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "CandidateId",foreignKey = @ForeignKey(name = "curriculumVitae_candidate_id_fk"))
-    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private Candidate candidate;
 
     @Column(name = "LinkedinAddress")

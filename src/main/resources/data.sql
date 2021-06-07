@@ -59,3 +59,16 @@ INSERT INTO "JobAdverts" ("Id","EmployerId","PositionId","Description","CityId",
 VALUES ("jobAdvertSeq".nextval,(select "Id" from "Persons" where  "Email"='turtelekom-info@turtelekom.com'),
 (SELECT "Id" FROM "Positions" where "Name"='Business Analyst'),
 'Business Analyst',(SELECT "Id" FROM "Cities" where "Name"='İzmir'),1, 8000, 3000, 2,CURRENT_DATE, CURRENT_DATE+10);
+
+INSERT INTO "CurriculumVitaes" ("Id","CoverLetter","GithubAddress","LinkedinAddress","CandidateId")
+VALUES ("curriculumVitaeSeq".nextval, 'test','http://githubMyAddress','http://linkedinMyAddress',
+(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com'));
+
+INSERT INTO "Abilities" ("Id","AbilityName","CurriculumVitaeId")
+VALUES ("abilitySeq".nextval,'Java',select "Id" from "CurriculumVitaes"
+where "CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com'));
+
+INSERT INTO "Abilities" ("Id","AbilityName","CurriculumVitaeId")
+VALUES ("abilitySeq".nextval,'Excel,Word',select "Id" from "CurriculumVitaes"
+where "CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com'));
+
