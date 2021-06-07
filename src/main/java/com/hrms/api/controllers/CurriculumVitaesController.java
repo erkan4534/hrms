@@ -33,8 +33,4 @@ public class CurriculumVitaesController {
         return curriculumVitaeService.add(curriculumVitae);
     }
 
-    @GetMapping("/getAllSortedByGraduationDateDesc")
-    public DataResult<List<Education>> getAllSortedByGraduationDateDesc(Long curriculumVitaeId) {
-        return  curriculumVitaeService.getAllSortedByGraduationDateDesc(curriculumVitaeId);
-    }
 }

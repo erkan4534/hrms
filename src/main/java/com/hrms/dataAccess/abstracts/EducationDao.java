@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface EducationDao extends JpaRepository<Education,Long> {
     List<Education> getByCurriculumVitae_Id(Long curriculumVitaeId,Sort sort);
-    List<Education> getAllSortedByGraduationDateDesc(Long curriculumVitaeId);
 }

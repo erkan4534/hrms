@@ -9,6 +9,7 @@ import com.hrms.core.utilities.results.SuccessResult;
 import com.hrms.dataAccess.abstracts.EducationDao;
 import com.hrms.entities.concretes.Education;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -35,6 +36,10 @@ public class EducationManager implements EducationService {
 
     @Override
     public DataResult<List<Education>> getAllSortedByGraduationDateDesc(Long curriculumVitaeId) {
-        return new SuccessDataResult<>(educationDao.getAllSortedByGraduationDateDesc(curriculumVitaeId),MessageBundle.getMessageTr("education.list.graduationDate.desc"));
+        return new SuccessDataResult<>(educationDao.getByCurriculumVitae_Id(curriculumVitaeId,
+                Sort.by(new Sort.Order(Sort.Direction.DESC, "graduationDate", Sort.NullHandling.NULLS_FIRST)))
+                ,MessageBundle.getMessageTr("education.list.graduationDate.desc"));
     }
+
+
 }

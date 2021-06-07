@@ -90,3 +90,19 @@ VALUES ("educationSeq".nextval,'Bilgisayar Mühendisliği Yüksek Lisans','Bahç
 to_date('02-04-2018','dd-MM-yyyy'),null,
 (select "Id" from "CurriculumVitaes" where
 "CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com')));
+
+INSERT INTO "Experiences" ("Id","FirmName","PositionName","quitDate","startingDate","CurriculumVitaeId")
+VALUES ("experienceSeq".nextval,'Vodafon A.Ş','Developer',to_date('02-08-2010','dd-MM-yyyy'),
+to_date('06-01-2005','dd-MM-yyyy'),select "Id" from "CurriculumVitaes" where
+"CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com'));
+
+INSERT INTO "Experiences" ("Id","FirmName","PositionName","quitDate","startingDate","CurriculumVitaeId")
+VALUES ("experienceSeq".nextval,'Türkcell A.Ş','Developer',to_date('02-08-2015','dd-MM-yyyy'),
+to_date('06-08-2010','dd-MM-yyyy'),select "Id" from "CurriculumVitaes" where
+"CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com'));
+
+INSERT INTO "Experiences" ("Id","FirmName","PositionName","quitDate","startingDate","CurriculumVitaeId")
+VALUES ("experienceSeq".nextval,'Türktelekom A.Ş','Developer',null,
+to_date('10-08-2015','dd-MM-yyyy'),select "Id" from "CurriculumVitaes" where
+"CandidateId"=(select "Id" from "Persons" where "Email"='bennu-adali@gmail.com'));
+

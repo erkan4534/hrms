@@ -1,16 +1,11 @@
 package com.hrms.api.controllers;
 
 import com.hrms.bussiness.abstracts.ExperienceService;
-import com.hrms.core.utilities.MessageBundle;
 import com.hrms.core.utilities.results.DataResult;
 import com.hrms.core.utilities.results.Result;
-import com.hrms.core.utilities.results.SuccessDataResult;
-import com.hrms.core.utilities.results.SuccessResult;
-import com.hrms.dataAccess.abstracts.ExperienceDao;
 import com.hrms.entities.concretes.Experience;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -27,7 +22,6 @@ public class ExperiencesController {
     @GetMapping("/getAll")
     public DataResult<List<Experience>> getAll() {
         return experienceService.getAll();
-
     }
 
     @PostMapping("/add")
@@ -35,4 +29,8 @@ public class ExperiencesController {
        return experienceService.add(experience);
     }
 
+    @GetMapping("/getAllSortedByQuitDateDesc/{curriculumVitaeId}")
+    DataResult<List<Experience>> getAllSortedByQuitDateDesc(@PathVariable Long curriculumVitaeId){
+        return experienceService.getAllSortedByQuitDateDesc(curriculumVitaeId);
+    }
 }

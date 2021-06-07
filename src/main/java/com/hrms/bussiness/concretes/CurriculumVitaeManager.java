@@ -38,11 +38,4 @@ public class CurriculumVitaeManager implements CurriculumVitaeService {
         curriculumVitaeDao.save(curriculumVitae);
         return new SuccessResult(MessageBundle.getMessageTr("curriculumVitae.add"));
     }
-
-    @Override
-    public DataResult<List<Education>> getAllSortedByGraduationDateDesc(Long curriculumVitaeId) {
-        return new SuccessDataResult<>(educationDao.getByCurriculumVitae_Id(curriculumVitaeId,
-                Sort.by(new Sort.Order(Sort.Direction.DESC, "graduationDate", Sort.NullHandling.NULLS_FIRST)))
-                ,MessageBundle.getMessageTr("curriculumVitae.sort.education"));
-    }
 }
