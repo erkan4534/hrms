@@ -3,6 +3,7 @@ package com.hrms.entities.dto;
 import com.hrms.entities.concretes.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
 import java.util.Date;
 
 @Data
@@ -14,18 +15,18 @@ public class CurriculumVitaeGetDto {
     private String githubAddress;
     private String coverLetter;
 
-    private String educationPartName;
-    private String educationSchoolName;
-    private Date educationStartingDate;
-    private Date educationGraduationDate;
+    private String partName;
+    private String schoolName;
+    private Date startingDate;
+    private Date graduationDate;
 
-    private String experienceFirmName;
-    private String experiencePositionName;
+    private String firmName;
+    private String positionName;
     private Date experienceStartingDate;
-    private Date experienceQuitDate;
+    private Date quitDate;
 
     private String language;
-    private Long languageDegree;
+    private Long degree;
 
-    private String abilityName;
+    private String name;
 }
