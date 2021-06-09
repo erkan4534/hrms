@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.List;
 
 @Data
@@ -15,7 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "CurriculumVitaes")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","educations","experiences","languages","abilities"})
-public class CurriculumVitae {
+public class CurriculumVitae implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "curriculumVitaeSeq")
