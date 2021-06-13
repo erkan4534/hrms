@@ -3,7 +3,6 @@ package com.hrms.api.controllers;
 import com.hrms.bussiness.abstracts.JobAdvertService;
 import com.hrms.core.utilities.results.DataResult;
 import com.hrms.core.utilities.results.Result;
-import com.hrms.entities.concretes.JobAdvert;
 import com.hrms.entities.dto.JobAdvertAddDto;
 import com.hrms.entities.dto.JobAdvertGetDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/jobAdverts")
+@CrossOrigin
 public class JobAdvertsController {
 
     private JobAdvertService jobAdvertService;
