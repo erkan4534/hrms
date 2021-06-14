@@ -27,7 +27,7 @@ public class JobAdvert implements Serializable {
     @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jobAdvertSeq")
     @SequenceGenerator(name = "jobAdvertSeq", sequenceName = "jobAdvertSeq", allocationSize = 1)
-    @JsonIgnore
+   // @JsonIgnore
     private Long id;
 
     @NotNull

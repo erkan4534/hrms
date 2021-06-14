@@ -18,7 +18,7 @@ public class City implements Serializable {
 
     @Id
     @Column(name = "Id")
-    @JsonIgnore
+ //   @JsonIgnore
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "citySeq")
     @SequenceGenerator(name = "citySeq", sequenceName = "citySeq", allocationSize = 1)
     private Long id;
