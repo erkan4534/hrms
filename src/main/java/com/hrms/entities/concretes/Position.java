@@ -19,7 +19,6 @@ public class Position implements Serializable {
 
     @Id
     @Column(name = "Id")
-    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "positionSeq")
     @SequenceGenerator(name = "positionSeq", sequenceName = "positionSeq", allocationSize = 1)
     private Long id;
