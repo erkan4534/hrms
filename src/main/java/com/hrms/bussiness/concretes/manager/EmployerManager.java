@@ -1,6 +1,7 @@
-package com.hrms.bussiness.concretes;
+package com.hrms.bussiness.concretes.manager;
 
 import com.hrms.bussiness.abstracts.EmployerService;
+import com.hrms.bussiness.concretes.specification.EmployerSpecification;
 import com.hrms.core.adapters.abstracts.NotificationAdapter;
 import com.hrms.core.utilities.MessageBundle;
 import com.hrms.core.utilities.results.*;
@@ -8,6 +9,7 @@ import com.hrms.dataAccess.abstracts.EmployerDao;
 import com.hrms.entities.concretes.Employer;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -16,16 +18,18 @@ public class EmployerManager implements EmployerService {
 
     private EmployerDao employerDao;
     private NotificationAdapter notificationAdapter;
+    private EmployerSpecification employerSpecification;
 
     @Autowired
-    public EmployerManager(EmployerDao employerDao,NotificationAdapter notificationAdapter) {
+    public EmployerManager(EmployerDao employerDao,NotificationAdapter notificationAdapter,EmployerSpecification employerSpecification) {
         this.employerDao = employerDao;
         this.notificationAdapter=notificationAdapter;
+        this.employerSpecification=employerSpecification;
     }
 
     @Override
-    public DataResult<List<Employer>> getAll() {
-        return new SuccessDataResult(employerDao.findAll(), MessageBundle.getMessageTr("employer.list"));
+    public DataResult<List<Employer>> getAll(Employer employer,Pageable pageable) {
+        return new SuccessDataResult(employerDao.findAll(employerSpecification.getFilter(employer), pageable), MessageBundle.getMessageTr("employer.list"));
     }
 
     @Override
@@ -41,6 +45,7 @@ public class EmployerManager implements EmployerService {
         notificationAdapter.sendMail(employer.getPerson().getEmail());
         return new SuccessResult(MessageBundle.getMessageTr("employer.add"));
     }
+
 
     public Result isValidate(Employer employer) {
 

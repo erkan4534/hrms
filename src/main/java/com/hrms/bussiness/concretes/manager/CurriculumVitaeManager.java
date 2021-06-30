@@ -1,4 +1,4 @@
-package com.hrms.bussiness.concretes;
+package com.hrms.bussiness.concretes.manager;
 
 import com.hrms.bussiness.abstracts.CurriculumVitaeService;
 import com.hrms.core.utilities.MessageBundle;

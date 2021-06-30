@@ -1,4 +1,4 @@
-package com.hrms.bussiness.concretes;
+package com.hrms.bussiness.concretes.manager;
 
 import com.hrms.bussiness.abstracts.CandidateService;
 import com.hrms.core.adapters.abstracts.MernisAdapter;
