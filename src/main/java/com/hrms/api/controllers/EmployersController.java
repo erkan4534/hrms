@@ -8,7 +8,10 @@ import com.hrms.entities.dto.EmployerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/employers")
@@ -23,8 +26,8 @@ public class EmployersController {
     }
 
     @GetMapping("/getAll")
-    public DataResult<List<Employer>> getAll(EmployerDto employerDto, Pageable pageable){
-        return employerService.getAll(employerDto,pageable);
+    public DataResult<List<Employer>> getAll(EmployerDto employerDto){
+        return employerService.getAll(employerDto);
     }
 
     @PostMapping("/add")

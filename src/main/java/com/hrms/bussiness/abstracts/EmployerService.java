@@ -8,6 +8,6 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface EmployerService {
-    DataResult<List<Employer>> getAll(EmployerDto employerDto, Pageable pageable);
+    DataResult<List<Employer>> getAll(EmployerDto employerDto);
     Result add(Employer employer);
 }

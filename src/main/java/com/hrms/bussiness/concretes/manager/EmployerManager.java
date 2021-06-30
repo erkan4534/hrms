@@ -29,8 +29,8 @@ public class EmployerManager implements EmployerService {
     }
 
     @Override
-    public DataResult<List<Employer>> getAll(EmployerDto employerDto, Pageable pageable) {
-        return new SuccessDataResult(employerDao.findAll(employerSpecification.getFilter(employerDto), pageable), MessageBundle.getMessageTr("employer.list"));
+    public DataResult<List<Employer>> getAll(EmployerDto employerDto) {
+        return new SuccessDataResult(employerDao.findAll(employerSpecification.getFilter(employerDto)), MessageBundle.getMessageTr("employer.list"));
     }
 
     @Override
