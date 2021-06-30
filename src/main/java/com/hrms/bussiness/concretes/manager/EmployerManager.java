@@ -7,6 +7,7 @@ import com.hrms.core.utilities.MessageBundle;
 import com.hrms.core.utilities.results.*;
 import com.hrms.dataAccess.abstracts.EmployerDao;
 import com.hrms.entities.concretes.Employer;
+import com.hrms.entities.dto.EmployerDto;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -28,8 +29,8 @@ public class EmployerManager implements EmployerService {
     }
 
     @Override
-    public DataResult<List<Employer>> getAll(Employer employer,Pageable pageable) {
-        return new SuccessDataResult(employerDao.findAll(employerSpecification.getFilter(employer), pageable), MessageBundle.getMessageTr("employer.list"));
+    public DataResult<List<Employer>> getAll(EmployerDto employerDto, Pageable pageable) {
+        return new SuccessDataResult(employerDao.findAll(employerSpecification.getFilter(employerDto), pageable), MessageBundle.getMessageTr("employer.list"));
     }
 
     @Override

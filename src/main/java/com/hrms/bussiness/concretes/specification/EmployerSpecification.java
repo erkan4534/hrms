@@ -1,19 +1,20 @@
 package com.hrms.bussiness.concretes.specification;
 
 import com.hrms.entities.concretes.Employer;
+import com.hrms.entities.dto.EmployerDto;
 import org.springframework.stereotype.Component;
 import org.springframework.data.jpa.domain.Specification;
 import static org.springframework.data.jpa.domain.Specification.where;
 
 @Component
-public class EmployerSpecification extends BaseSpecification<Employer, Employer> {
+public class EmployerSpecification extends BaseSpecification<Employer, EmployerDto> {
 
     @Override
-    public Specification<Employer> getFilter(Employer employer) {
-        return where(firmNameContains(employer.getFirmName()))
-                .and(emailContains(employer.getPerson()!=null?employer.getPerson().getEmail():null))
-                .and(webSiteContains(employer.getWebSite()))
-                .and(telNoContains(employer.getPerson()!=null?employer.getPerson().getTelNo():null));
+    public Specification<Employer> getFilter(EmployerDto employerDto) {
+        return where(firmNameContains(employerDto.getFirmName()))
+                .and(emailContains(employerDto.getEmail()))
+                .and(webSiteContains(employerDto.getWebSite()))
+                .and(telNoContains(employerDto.getTelNo()));
     }
 
     private Specification<Employer> firmNameContains(String firmName) {

@@ -5,10 +5,9 @@ import com.hrms.core.utilities.results.Result;
 import com.hrms.entities.concretes.Employer;
 import com.hrms.entities.dto.EmployerDto;
 import org.springframework.data.domain.Pageable;
-
 import java.util.List;
 
 public interface EmployerService {
-    DataResult<List<Employer>> getAll(Employer employer, Pageable pageable);
+    DataResult<List<Employer>> getAll(EmployerDto employerDto, Pageable pageable);
     Result add(Employer employer);
 }

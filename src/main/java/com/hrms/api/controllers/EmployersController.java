@@ -23,8 +23,8 @@ public class EmployersController {
     }
 
     @GetMapping("/getAll")
-    public DataResult<List<Employer>> getAll(Employer employer, Pageable pageable){
-        return employerService.getAll(employer,pageable);
+    public DataResult<List<Employer>> getAll(EmployerDto employerDto, Pageable pageable){
+        return employerService.getAll(employerDto,pageable);
     }
 
     @PostMapping("/add")
