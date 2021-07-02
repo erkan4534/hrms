@@ -37,7 +37,6 @@ public class EmployerManager implements EmployerService {
     public Result add(Employer employer) {
 
         Result result = isValidate(employer);
-
         if (!result.isSuccess()) {
             return result;
         }
@@ -57,13 +56,17 @@ public class EmployerManager implements EmployerService {
                     emp.getPerson().setEmail(employer.getPerson().getEmail());
                     emp.getPerson().setTelNo(employer.getPerson().getTelNo());
                     emp.getPerson().setPassword(employer.getPerson().getPassword());
+
+                    Result result = isValidate(emp);
+                    if (!result.isSuccess()) {
+                        return result;
+                    }
+
                     return employerDao.save(emp);
                 });
 
         return new SuccessResult(MessageBundle.getMessageTr("employer.edit"));
     }
-
-
 
 
     public Result isValidate(Employer employer) {
