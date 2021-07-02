@@ -8,6 +8,7 @@ import com.hrms.entities.dto.EmployerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -23,12 +24,17 @@ public class EmployersController {
     }
 
     @GetMapping("/getAll")
-    public DataResult<List<Employer>> getAll(EmployerDto employerDto){
+    public DataResult<List<Employer>> getAll(EmployerDto employerDto) {
         return employerService.getAll(employerDto);
     }
 
     @PostMapping("/add")
-    public Result add (@RequestBody Employer employer){
+    public Result add(@RequestBody Employer employer) {
         return employerService.add(employer);
+    }
+
+    @PutMapping("/edit/{id}")
+    public Result edit(@RequestBody Employer employer, @PathVariable Long id) {
+        return employerService.edit(employer, id);
     }
 }

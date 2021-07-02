@@ -47,6 +47,24 @@ public class EmployerManager implements EmployerService {
         return new SuccessResult(MessageBundle.getMessageTr("employer.add"));
     }
 
+    @Override
+    public Result edit(Employer employer, Long id) {
+
+        employerDao.findById(id)
+                .map(emp -> {
+                    emp.setFirmName(employer.getFirmName());
+                    emp.setWebSite(employer.getWebSite());
+                    emp.getPerson().setEmail(employer.getPerson().getEmail());
+                    emp.getPerson().setTelNo(employer.getPerson().getTelNo());
+                    emp.getPerson().setPassword(employer.getPerson().getPassword());
+                    return employerDao.save(emp);
+                });
+
+        return new SuccessResult(MessageBundle.getMessageTr("employer.edit"));
+    }
+
+
+
 
     public Result isValidate(Employer employer) {
 
