@@ -1,6 +1,5 @@
 package com.hrms.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +16,6 @@ public class Employer implements Serializable {
 
     @Id
     @Column(name = "Id")
-    @JsonIgnore
     private Long id;
 
     @MapsId
