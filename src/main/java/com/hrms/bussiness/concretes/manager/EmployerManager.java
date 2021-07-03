@@ -35,8 +35,7 @@ public class EmployerManager implements EmployerService {
     public DataResult<List<Employer>> getAll(EmployerDto employerDto, @PathVariable int pageNo, @PathVariable int pageSize) {
         Pageable paging = PageRequest.of(pageNo, pageSize);
         Page<Employer> pageData = employerDao.findAll(employerSpecification.getFilter(employerDto),paging);
-        List<Employer> employerList = pageData.getContent();
-        return new SuccessDataResult(employerList, MessageBundle.getMessageTr("employer.list"));
+        return new SuccessDataResult(pageData, MessageBundle.getMessageTr("employer.list"));
     }
 
     @Override
