@@ -6,7 +6,6 @@ import com.hrms.core.utilities.results.Result;
 import com.hrms.entities.concretes.Employer;
 import com.hrms.entities.dto.EmployerDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -22,9 +21,9 @@ public class EmployersController {
         this.employerService = employerService;
     }
 
-    @GetMapping("/getAll")
-    public DataResult<List<Employer>> getAll(EmployerDto employerDto) {
-        return employerService.getAll(employerDto);
+    @GetMapping("/getAll/{pageNo}/{pageSize}")
+    public DataResult<List<Employer>> getAll(EmployerDto employerDto,@PathVariable int pageNo,@PathVariable int pageSize) {
+        return employerService.getAll(employerDto,pageNo,pageSize);
     }
 
     @PostMapping("/add")

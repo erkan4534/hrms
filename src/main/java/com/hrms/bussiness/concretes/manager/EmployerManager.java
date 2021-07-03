@@ -10,8 +10,11 @@ import com.hrms.entities.concretes.Employer;
 import com.hrms.entities.dto.EmployerDto;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 @Service
@@ -29,8 +32,11 @@ public class EmployerManager implements EmployerService {
     }
 
     @Override
-    public DataResult<List<Employer>> getAll(EmployerDto employerDto) {
-        return new SuccessDataResult(employerDao.findAll(employerSpecification.getFilter(employerDto)), MessageBundle.getMessageTr("employer.list"));
+    public DataResult<List<Employer>> getAll(EmployerDto employerDto, @PathVariable int pageNo, @PathVariable int pageSize) {
+        Pageable paging = PageRequest.of(pageNo, pageSize);
+        Page<Employer> pageData = employerDao.findAll(employerSpecification.getFilter(employerDto),paging);
+        List<Employer> employerList = pageData.getContent();
+        return new SuccessDataResult(employerList, MessageBundle.getMessageTr("employer.list"));
     }
 
     @Override
