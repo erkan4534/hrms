@@ -54,22 +54,23 @@ public class EmployerManager implements EmployerService {
     @Override
     public Result edit(Employer employer, Long id) {
 
-        employerDao.findById(id)
+        Employer editEmployer=employerDao.findById(id)
                 .map(emp -> {
                     emp.setFirmName(employer.getFirmName());
                     emp.setWebSite(employer.getWebSite());
                     emp.getPerson().setEmail(employer.getPerson().getEmail());
                     emp.getPerson().setTelNo(employer.getPerson().getTelNo());
                     emp.getPerson().setPassword(employer.getPerson().getPassword());
+                    emp.getPerson().setRePassword(employer.getPerson().getRePassword());
+                    return emp;
+                }).get();
 
-                    Result result = isValidate(emp);
-                    if (!result.isSuccess()) {
-                        return result;
-                    }
+        Result result = isValidate(editEmployer);
+        if (!result.isSuccess()) {
+            return result;
+        }
 
-                    return employerDao.save(emp);
-                });
-
+        employerDao.save(editEmployer);
         return new SuccessResult(MessageBundle.getMessageTr("employer.edit"));
     }
 
@@ -94,6 +95,10 @@ public class EmployerManager implements EmployerService {
             message.append(MessageBundle.getMessageTr("employer.validation.password"));
         }
 
+        if(StringUtils.isEmpty(employer.getPerson().getRePassword())){
+            message.append(MessageBundle.getMessageTr("employer.validation.password"));
+        }
+
         if (message.length() > 0) {
             message.deleteCharAt(message.length() - 1);
             return new ErrorResult(message.toString());
@@ -110,8 +115,13 @@ public class EmployerManager implements EmployerService {
             return new ErrorResult(message.toString());
         }
 
-        if (employerDao.getByPerson_Email(employer.getPerson().getEmail()) != null) {
+        if (employer.getId()==null && employerDao.getByPerson_Email(employer.getPerson().getEmail()) != null) {
             message.append(MessageBundle.getMessageTr("employer.validation.using.email"));
+            return new ErrorResult(message.toString());
+        }
+
+        if(!employer.getPerson().getPassword().equals(employer.getPerson().getRePassword())){
+            message.append(MessageBundle.getMessageTr("employer.validation.passwords.match"));
             return new ErrorResult(message.toString());
         }
 

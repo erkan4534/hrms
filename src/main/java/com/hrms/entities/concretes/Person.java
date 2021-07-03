@@ -26,6 +26,9 @@ public class Person implements Serializable {
     @NotBlank(message = "Password field can not be null or empty")
     private String password;
 
+    @Transient
+    private String rePassword;
+
     @Column(name = "TelNo")
     @NotBlank(message = "TelNo field can not be null or empty")
     private String telNo;
